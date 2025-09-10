@@ -1,16 +1,26 @@
 package mate.academy.service;
 
+import mate.academy.model.User;
+
 public class AuthenticationService {
+    private final UserService userService = new UserService();
     /**
-     * Imagine that some user wants to login to your site.
-     * You should check if user credentials (login and password) are valid or not.
-     * All users are stored in <code>UserService</code> class.
-     * @param email - user's email
-     * @param password - user's password
-     * @return true if user by email exists and passed password is equal to user's password.
-     * Return false in any other cases.
+     Уявіть, що деякий користувач хоче увійти на ваш сайт.
+     Ви повинні перевірити, чи є облікові дані користувача (логін і пароль)
+     дійсними.
+     Усі користувачі зберігаються в класі <code>UserService</code>.
+     @param email - електронна пошта користувача
+     @param password - пароль користувача
+     @return true, якщо користувач з такою електронною поштою існує,
+     а введений пароль відповідає паролю користувача.
+     Повертає false в будь-яких інших випадках.
      */
+
     public boolean login(String email, String password) {
-        return false;
+        User user = userService.findByEmail(email);
+        if (user == null) {
+            return false;
+        }
+        return (user.getPassword().equals(password));
     }
 }
