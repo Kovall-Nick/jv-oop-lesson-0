@@ -8,13 +8,12 @@ public class UserService {
             new User("alice@i.ua", "1234")
     };
 
-    /*
- Знайти користувача за електронною поштою. Усі користувачі зберігаються
- в <code>private static final User[] users</code>
- @param email - вхідний параметр
-  @return - користувач, якщо його електронна пошта дорівнює переданій електронній пошті.
- Повернути <code>null</code>, якщо підходящого користувача немає
- */
+    /**
+     * Find user by email. All users are stored in <code>private static final User[] users</code>
+     * @param email - the input parameter
+     * @return - user if his email is equal to passed email.
+     * Return <code>null</code> if there is no suitable user
+     */
     public User findByEmail(String email) {
         for (User user : users) {
             if (user.getEmail().equals(email)) {
